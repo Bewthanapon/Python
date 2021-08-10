@@ -4,15 +4,22 @@
 import webbrowser
 import pyautogui as pg
 import time
+import pyperclip
 
-def Search(keyword):
+def Search(keyword, eng=False, scroll=False, sctime=10):
 	# 1- open webbrower and goto google
 	url = 'https://www.google.com'
 	webbrowser.open(url)
 	time.sleep(1)
 
 	# 2- type "keyword"
-	pg.write(keyword, interval = 0.25)
+	if eng == True:
+		pg.write(keyword, interval = 0.25)
+	else:
+		pyperclip.copy(keyword)
+		time.sleep(1)
+		pg.hotkey('ctrl', 'v')
+
 	time.sleep(1)
 
 	# 3- press enter for searching
@@ -20,7 +27,16 @@ def Search(keyword):
 	time.sleep(1)
 
 	# 4- capture (screenshot) and save to file
-	pg.screenshot(keyword + '.png')
+	if scroll == True:
+		for i in range(sctime):
+			pg.scroll(-200)
+			pg.screenshot('{}-{} .png'.format(keyword, i+1))
+			time.sleep(1)
+	else:
+		pg.screenshot(keyword + '.png')
+	
 
-Search('bill gate')
-Search('steve job')	
+Search('ราคาน้ำมัน',scroll=True)
+#Search('bill gate')
+#Search('steve job')	
+
