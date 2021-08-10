@@ -1,6 +1,7 @@
 # pip install PyAutoGUI
 # pip install pillow  # จัดการภาพ
 
+# part 1
 import webbrowser
 import pyautogui as pg
 import time
@@ -39,4 +40,28 @@ def Search(keyword, eng=False, scroll=False, sctime=10):
 Search('ราคาน้ำมัน',scroll=True)
 #Search('bill gate')
 #Search('steve job')	
+
+
+# part 2 
+
+import webbrowser
+import pyautogui as pg
+import time
+
+def Scan(url, sctime=10):
+	
+	webbrowser.open(url)
+	time.sleep(2)
+	webname = url.split('//')[1]
+
+	for i in range(sctime):
+		pg.scroll(-500)
+		pg.screenshot('{}-{} .png'.format(webname, i+1))
+		time.sleep(1)
+
+url = 'https://www.bbc.com'
+Scan(url, sctime=5)
+
+
+
 
