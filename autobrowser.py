@@ -1,5 +1,5 @@
 # pip install PyAutoGUI
-# pip install pillow  # จัดการภาพ
+# pip install pillow  # จัดการภาพ ไม่ต้อง import PIL
 
 # part 1
 import webbrowser
