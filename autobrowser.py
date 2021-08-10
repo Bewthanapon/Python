@@ -1,4 +1,5 @@
 # pip install PyAutoGUI
+# pip install pillow  # จัดการภาพ
 
 import webbrowser
 import pyautogui as pg
